@@ -53,8 +53,7 @@
     "@itwin/itwinui-react": "~1.46.0",
     "react": "^17.0.0",
     "react-dom": "^17.0.0",
-    "react-resize-detector": "^6.7.6",
-    "semver": "^7.3.5"
+    "react-resize-detector": "^6.7.6"
   },
   "devDependencies": {
     "@itwin/build-tools": "workspace:*",
