@@ -67,7 +67,7 @@
     "@types/chai-as-promised": "^7",
     "@types/deep-assign": "^0.1.0",
     "@types/mocha": "^8.2.2",
-    "@types/node": "^18.11.5",
+    "@types/node": "^18.14.0",
     "@types/qs": "^6.5.0",
     "@types/superagent": "^4.1.14",
     "@types/sinon": "^9.0.0",

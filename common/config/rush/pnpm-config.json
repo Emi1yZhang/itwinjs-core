@@ -2,6 +2,9 @@
   "$schema": "https://raw.githubusercontent.com/microsoft/rushstack/main/libraries/rush-lib/src/schemas/pnpm-config.schema.json",
   "useWorkspaces": true,
   "strictPeerDependencies": false,
+  "globalOverrides": {
+    "@types/node": "^18.14.0"
+  },
   "globalPeerDependencyRules": {
     "ignoreMissing": [
       "@babel/core",
