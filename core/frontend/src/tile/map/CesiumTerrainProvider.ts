@@ -10,7 +10,7 @@ import { assert, BeDuration, BeTimePoint, ByteStream, JsonUtils, utf8ToString } 
 import { Point2d, Point3d, Range1d, Vector3d } from "@itwin/core-geometry";
 import { nextPoint3d64FromByteStream, OctEncodedNormal, QPoint2d } from "@itwin/core-common";
 import { MessageSeverity } from "@itwin/appui-abstract";
-import { request, RequestOptions } from "../../request/Request";
+// import { request, RequestOptions } from "../../request/Request";
 import { ApproximateTerrainHeights } from "../../ApproximateTerrainHeights";
 import { IModelApp } from "../../IModelApp";
 import { RealityMeshParams, RealityMeshParamsBuilder } from "../../render/RealityMeshParams";
@@ -53,10 +53,9 @@ export async function getCesiumAccessTokenAndEndpointUrl(assetId = 1, requestKey
 
   const requestTemplate = `https://api.cesium.com/v1/assets/${assetId}/endpoint?access_token={CesiumRequestToken}`;
   const apiUrl: string = requestTemplate.replace("{CesiumRequestToken}", requestKey);
-  const apiRequestOptions: RequestOptions = { method: "GET", responseType: "json" };
 
   try {
-    const apiResponse = await request(apiUrl, apiRequestOptions);
+    const apiResponse = await (await fetch(apiUrl)).json();
     if (undefined === apiResponse || undefined === apiResponse.body || undefined === apiResponse.body.url) {
       assert(false);
       return {};
@@ -89,9 +88,12 @@ export async function getCesiumTerrainProvider(opts: TerrainMeshProviderOptions)
 
   let layers;
   try {
-    const layerRequestOptions: RequestOptions = { method: "GET", responseType: "json", headers: { authorization: `Bearer ${accessTokenAndEndpointUrl.token}` } };
+    // const layerRequestOptions: RequestOptions = { method: "GET", responseType: "json", headers: { authorization: `Bearer ${accessTokenAndEndpointUrl.token}` } };
+    // eslint-disable-next-line @typescript-eslint/naming-convention, quote-props
+    const headers = new Headers({ "Authorization": `Bearer ${accessTokenAndEndpointUrl.token}` });
     const layerUrl = `${accessTokenAndEndpointUrl.url}layer.json`;
-    const layerResponse = await request(layerUrl, layerRequestOptions);
+    // const layerResponse = await request(layerUrl, layerRequestOptions);
+    const layerResponse = await (await fetch(layerUrl, { headers })).json();
     if (undefined === layerResponse) {
       notifyTerrainError();
       return undefined;
@@ -222,16 +224,23 @@ class CesiumTerrainProvider extends TerrainMeshProvider {
     const tile = args.tile;
     const quadId = tile.quadId;
     const tileUrl = this.constructUrl(quadId.row, quadId.column, quadId.level);
-    const requestOptions: RequestOptions = {
-      method: "GET",
-      responseType: "arraybuffer",
-      headers: { authorization: `Bearer ${this._accessToken}` },
-      accept: "application/vnd.quantized-mesh;" /* extensions=octvertexnormals, */ + "application/octet-stream;q=0.9,*/*;q=0.01",
-    };
+    // const requestOptions: RequestOptions = {
+    //   method: "GET",
+    //   responseType: "arraybuffer",
+    //   headers: { authorization: `Bearer ${this._accessToken}` },
+    //   accept: "application/vnd.quantized-mesh;" /* extensions=octvertexnormals, */ + "application/octet-stream;q=0.9,*/*;q=0.01",
+    // };
 
     try {
-      const response = await request(tileUrl, requestOptions);
-      return response.status === 200 ? new Uint8Array(response.body) : undefined;
+      const response = await fetch(tileUrl, {
+        headers: new Headers({
+          authorization: `Bearer ${this._accessToken}`,
+          accept:
+            "application/vnd.quantized-mesh;" /* extensions=octvertexnormals, */ +
+            "application/octet-stream;q=0.9,*/*;q=0.01",
+        }),
+      });
+      return !response.ok ? new Uint8Array(await response.arrayBuffer()) : undefined;
     } catch (_) {
       return undefined;
     }

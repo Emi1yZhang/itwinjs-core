@@ -6,7 +6,7 @@
  * @module Tiles
  */
 
-import { request } from "../../request/Request";
+// import { request } from "../../request/Request";
 import { assert, compareStrings, Dictionary } from "@itwin/core-bentley";
 import { ArcGisUtilities, MapLayerAccessClient, QuadId } from "../internal";
 import { ImageMapLayerSettings } from "@itwin/core-common";
@@ -47,11 +47,8 @@ export class ArcGISTileMap {
     } catch {
     }
 
-    const data = await request(urlObj.toString() , {
-      method: "GET",
-      responseType: "json",
-    });
-    return data.body;
+    const data = await (await fetch(urlObj.toString())).json();
+    return data;
   }
 
   protected getAvailableTilesFromCache(tiles: QuadId[]): {allTilesFound: boolean, available: boolean[]} {

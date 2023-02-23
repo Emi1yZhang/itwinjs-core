@@ -6,7 +6,7 @@
 /** @packageDocumentation
  * @module Tiles
  */
-import { request, RequestOptions, Response } from "../../request/Request";
+// import { request, RequestOptions, Response } from "../../request/Request";
 import { IModelApp } from "../../IModelApp";
 import { IModelConnection } from "../../IModelConnection";
 import { Cartographic } from "@itwin/core-common";
@@ -56,11 +56,7 @@ export class BingElevationProvider {
         .replace("{heights}", geodetic ? "ellipsoid" : "sealevel");
 
     try {
-      const tileResponse: Response = await request(requestUrl, {
-        method: "GET",
-        responseType: "json",
-      });
-
+      const tileResponse = await (await fetch(requestUrl)).json();
       return tileResponse.body.resourceSets[0].resources[0].elevations[0];
     } catch (error) {
       return 0.0;
@@ -74,13 +70,9 @@ export class BingElevationProvider {
   public async getHeights(range: Range2d): Promise<number[] | undefined> {
     const boundingBox = `${range.low.y},${range.low.x},${range.high.y},${range.high.x}`;
     const requestUrl = this._heightRangeRequestTemplate.replace("{boundingBox}", boundingBox);
-    const tileRequestOptions: RequestOptions = {
-      method: "GET",
-      responseType: "json",
-    };
 
     try {
-      const tileResponse: Response = await request(requestUrl, tileRequestOptions);
+      const tileResponse = await (await fetch(requestUrl)).json();
       return tileResponse.body.resourceSets[0].resources[0].elevations;
     } catch (error) {
       return undefined;
@@ -95,11 +87,7 @@ export class BingElevationProvider {
 
     const requestUrl = this._seaLevelOffsetRequestTemplate.replace("{points}", `${carto.latitudeDegrees},${carto.longitudeDegrees}`);
     try {
-      const tileResponse: Response = await request(requestUrl, {
-        method: "GET",
-        responseType: "json",
-      });
-
+      const tileResponse = await (await fetch(requestUrl)).json();
       return tileResponse.body.resourceSets[0].resources[0].offsets[0];
     } catch (error) {
       return 0.0;

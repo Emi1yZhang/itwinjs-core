@@ -5,7 +5,7 @@
 /** @packageDocumentation
  * @module Tiles
  */
-import { request, RequestOptions } from "./request/Request";
+// import { request, RequestOptions } from "./request/Request";
 import { assert, BentleyStatus, GuidString } from "@itwin/core-bentley";
 import { IModelError, RealityData, RealityDataProvider, RealityDataSourceKey, RealityDataSourceProps } from "@itwin/core-common";
 import { CesiumIonAssetProvider, getCesiumAccessTokenAndEndpointUrl, getCesiumAssetUrl, getCesiumOSMBuildingsUrl } from "./tile/internal";
@@ -84,24 +84,17 @@ export class RealityDataSourceCesiumIonAssetImpl implements RealityDataSource {
     else
       this._baseUrl = `${urlParts.join("/")}/`;
   }
-  private async _doRequest(url: string, responseType: string): Promise<any> {
-    let options: RequestOptions = {
-      method: "GET",
-      responseType,
-    };
-
+  private async _doRequest(url: string): Promise<Response> {
     const authToken = this._requestAuthorization;
+    let options;
     if (authToken) {
       options = {
-        ...options,
-        headers: {
+        headers: new Headers({
           authorization: authToken,
-        },
+        }),
       };
     }
-
-    const data = await request(url, options);
-    return data.body;
+    return fetch(url, options);
   }
 
   /**
@@ -140,16 +133,15 @@ export class RealityDataSourceCesiumIonAssetImpl implements RealityDataSource {
 
     // The following is only if the reality data is not stored on PW Context Share.
     this.setBaseUrl(url);
-    return this._doRequest(url, "json");
+    return (await this._doRequest(url)).json();
   }
 
   /**
    * Returns the tile content. The path to the tile is relative to the base url of present reality data whatever the type.
    */
-  public async getTileContent(name: string): Promise<any> {
+  public async getTileContent(name: string): Promise<ArrayBuffer> {
     const tileUrl = this._baseUrl + name;
-
-    return this._doRequest(tileUrl, "arraybuffer");
+    return (await this._doRequest(tileUrl)).arrayBuffer();
   }
 
   /**
@@ -158,7 +150,7 @@ export class RealityDataSourceCesiumIonAssetImpl implements RealityDataSource {
   public async getTileJson(name: string): Promise<any> {
     const tileUrl = this._baseUrl + name;
 
-    return this._doRequest(tileUrl, "json");
+    return (await this._doRequest(tileUrl)).json();
   }
 
   public getTileContentType(url: string): "tile" | "tileset" {
