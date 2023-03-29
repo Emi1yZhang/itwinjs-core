@@ -167,7 +167,7 @@ async function testWindowSizeSettings() {
   await ElectronHost.openMainWindow({ storeWindowName });
 
   const window = ElectronHost.mainWindow;
-  assert(window);
+  assert(window, "Failed to assert window");
 
   let sizeAndPos = ElectronHost.getWindowSizeAndPositionSetting(storeWindowName);
   const expectedBounds = window.getBounds();
@@ -177,7 +177,7 @@ async function testWindowSizeSettings() {
   assert(sizeAndPos?.y === expectedBounds.y);
 
   let isMaximized = ElectronHost.getWindowMaximizedSetting(storeWindowName);
-  assert(isMaximized === window.isMaximized());
+  assert(isMaximized === window.isMaximized(), "Failed to assert window.isMaximized === isMaximized");
 
   window.maximize();
   if (isXvfbRunning)
@@ -186,7 +186,7 @@ async function testWindowSizeSettings() {
     await BeDuration.wait(100); // "maximize" event is not always emitted immediately
 
   isMaximized = ElectronHost.getWindowMaximizedSetting(storeWindowName);
-  assert(isMaximized);
+  assert(isMaximized, "Failed to assert isMaximized");
 
   window.unmaximize();
   if (isXvfbRunning)
@@ -195,23 +195,23 @@ async function testWindowSizeSettings() {
     await BeDuration.wait(100); // "unmaximize" event is not always emitted immediately
 
   isMaximized = ElectronHost.getWindowMaximizedSetting(storeWindowName);
-  assert(!isMaximized);
+  assert(!isMaximized, "Failed to assert !isMaximized");
 
   const width = 250;
   const height = 251;
   window.setSize(width, height);
   await BeDuration.wait(250); // wait for new size to be saved to settings file
   sizeAndPos = ElectronHost.getWindowSizeAndPositionSetting(storeWindowName);
-  assert(sizeAndPos?.width === width);
-  assert(sizeAndPos?.height === height);
+  assert(sizeAndPos?.width === width, "Failed to assert width");
+  assert(sizeAndPos?.height === height, "Failed to assert height");
 
   const x = 15;
   const y = 16;
   window.setPosition(x, y);
   await BeDuration.wait(250); // wait for new position to be saved to settings file
   sizeAndPos = ElectronHost.getWindowSizeAndPositionSetting(storeWindowName);
-  assert(sizeAndPos?.x === x);
-  assert(sizeAndPos?.y === y);
+  assert(sizeAndPos?.x === x, "Failed to assert x");
+  assert(sizeAndPos?.y === y, "Failed to assert y");
 }
 
 function assertElectronHostNotInitialized() {
