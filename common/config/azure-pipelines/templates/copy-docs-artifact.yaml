@@ -6,7 +6,6 @@ parameters:
   - name: stagingDir
     type: string
     default: $(System.ArtifactsDirectory)/staging/
-
   - name: projectId
     type: string
     default: 2c48216e-e72f-48b4-a4eb-40ff1c04e8e4
@@ -17,6 +16,9 @@ parameters:
   - name: defaultBranch
     type: string
     default: refs/heads/master
+  - name: specificBuild
+    type: string
+    default: ""
 
   # If useCurrentDocsArtifact is set to true, attempt to pull artifact from the current run
   # rather than latest succesful run.
@@ -56,9 +58,12 @@ steps:
           ${{ if parameters.buildTag }}:
             buildVersionToDownload: latest
             tags: ${{parameters.buildTag}}
+          ${{ elseif parameters.specificBuild }}:
+            buildVersionToDownload: specific
+            buildId: ${{ parameters.specificBuild }}
           ${{ else }}:
-            branchName: ${{ parameters.defaultBranch }}
             buildVersionToDownload: latestFromBranch
+            branchName: ${{ parameters.defaultBranch }}
 
   - ${{ if eq(length(parameters.stagingSteps), 0) }}:
       # Run if no staging steps are provided
