@@ -77,6 +77,7 @@ class BentleyMochaReporter extends Spec {
           console.log(process._getActiveHandles())
           console.log(process._getActiveRequests())
           wtf.setLogger("info", console.error);
+          wtf.setLogger("error", console.error);
           wtf.dump();
         } else {
           console.error("Try running with the DEBUG_LEAKS env var set to see open handles.");
