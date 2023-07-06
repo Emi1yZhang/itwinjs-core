@@ -178,6 +178,7 @@ export class V2CheckpointManager {
 
   /** Member names differ slightly between the V2Checkpoint api and the CloudSqlite api. Add aliases `accessName` for `accountName` and `accessToken` for `sasToken` */
   private static toCloudContainerProps(from: V2CheckpointAccessProps): CloudSqlite.ContainerAccessProps {
+    console.log("dummy change");
     return { ...from, accessName: from.accountName, accessToken: from.sasToken };
   }
 
