@@ -1,14 +1,48 @@
 # iTwin.js Docs CI Build
 
+resources:
+  pipelines:
+  - pipeline: generated-docs
+    source: iTwin.js/Docs/iTwin.js Docs - YAML
+  - pipeline: AppUI Docs
+    source: iTwin AppUI/AppUI Docs CI
+    version: 20230606.14
+  - pipeline: Presentation Docs
+    source: iTwin Presentation/iTwin Presentation Docs
+    version: 20230606.2
+    tags:
+      - hasDocs
+  - pipeline: iTwin-Auth-Clients Docs
+    source: iTwin.js/Clients/iTwin.auth-clients docs build
+    version: 20230519.8
+    tags:
+      - hasDocs
+  - pipeline: Transformer Docs
+    version: 20230606.1
+    source: iTwin.imodel-transformer docs
+  - pipeline: BIS Docs
+    version: 20230530.3
+    source: BIS/Generate-Schema-Markdown-(GitHub)
+
 trigger:
   branches:
     include:
       - master
       - release/*
     exclude:
-      - release/3*
+      - release/3*x
       - release/2*
       - release/1*
+
+parameters:
+  - name: useCoreDocsArtifact
+    displayName: Use a previously built core docs. Choose a specific build's artifact through 'Resources' below.
+    type: boolean
+    default: false
+  - name: forcePublish
+    displayName: Publish docs for release pipeline.
+    type: boolean
+    default: false
 
 variables:
   - group: Rush Build Cache SAS Token
@@ -32,4 +66,5 @@ jobs:
     parameters:
       workingDir: $(Pipeline.Workspace)/itwinjs-core
       outputDir: $(Agent.BuildDirectory)/tempDocsBuild/public_build
-      shouldPublish: ${{ or(eq(variables['Build.SourceBranch'], 'refs/heads/master'), startsWith(variables['Build.SourceBranch'], 'refs/heads/release')) }}
+      shouldPublish: ${{ or(eq(variables['Build.SourceBranch'], 'refs/heads/master'), startsWith(variables['Build.SourceBranch'], 'refs/heads/release'), parameters.forcePublish) }}
+      useCoreDocsArtifact: ${{ parameters.useCoreDocsArtifact }}
