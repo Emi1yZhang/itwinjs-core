@@ -19,7 +19,7 @@ const options = {
 
 let fse;
 try {
-  fse = require("fs-extra");
+  fse = require("../../core/backend/node_modules/fs-extra");
 } catch (err) {
   console.log("Please check that fs-extra is installed");
   return console.error(err);
