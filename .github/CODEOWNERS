@@ -1,13 +1,18 @@
 # This CODEOWNERS file follows the format of Github's CODEOWNERS
-#   Documentation for reference, https://help.github.com/en/github/creating-cloning-and-archiving-repositories/about-code-owners
 
-# This is a comment.
-# Each line is a file pattern followed by one or more owners.
+# Documentation for reference, <https://help.github.com/en/github/creating-cloning-and-archiving-repositories/about-code-owners>
+
+# This is a comment
+
+# Each line is a file pattern followed by one or more owners
 
 # These owners will be the default owners for everything in
-# the repo. Unless a later match takes precedence,
+
+# the repo. Unless a later match takes precedence
+
 # @global-owner1 and @global-owner2 will be requested for
-# review when someone opens a pull request.
+
+# review when someone opens a pull request
 
 * @iTwin/itwinjs-core-admins
 
@@ -19,12 +24,18 @@
 rush.json       @iTwin/itwinjs-core-admins
 
 # The syntax used below tries to cover both files and folders in the common folder that operate per=package
+
 # Due to syntax requirements, both can't be covered in a single line
+
 #
-# The three main folder patterns that covered are:
-#   1. /common/api/{packageName}.api.md
-#   1. /common/api/summary/{packageName}.exports.csv
-#   1. /common/changes/@itwin/{packageName}/*.json
+
+# The three main folder patterns that covered are
+
+# 1. /common/api/{packageName}.api.md
+
+# 1. /common/api/summary/{packageName}.exports.csv
+
+# 1. /common/changes/@itwin/{packageName}/*.json
 
 /common/**/analytical-backend.*               @ColinKerr @diegoalexdiaz
 /common/**/analytical-backend/                @ColinKerr @diegoalexdiaz
@@ -45,15 +56,15 @@ rush.json       @iTwin/itwinjs-core-admins
 /common/**/eslint-plugin/                     @calebmshafer @paulius-valiunas
 /common/**/express-server.*                   @paulius-valiunas @wgoehrig
 /common/**/express-server/                    @paulius-valiunas @wgoehrig
-/common/**/frontend-devtools.*                @iTwin/itwinjs-core-display @Ellord207
+/common/**/frontend-devtools.*@iTwin/itwinjs-core-display @Ellord207
 /common/**/frontend-devtools/                 @iTwin/itwinjs-core-display @Ellord207
 /common/**/frontend-tiles.*                   @iTwin/itwinjs-core-display @danieliborra
 /common/**/frontend-tiles/                    @iTwin/itwinjs-core-display @danieliborra
-/common/**/core-geometry.*                    @bbastings @dassaf4 @saeeedtorabi
+/common/**/core-geometry.*@bbastings @dassaf4 @saeeedtorabi
 /common/**/core-geometry/                     @bbastings @dassaf4 @saeeedtorabi
 /common/**/hypermodeling-frontend.*           @iTwin/itwinjs-core-display @bbastings
 /common/**/hypermodeling-frontend/            @iTwin/itwinjs-core-display @bbastings
-/common/**/core-backend.*                     @iTwin/itwinjs-core-admins
+/common/**/core-backend.*@iTwin/itwinjs-core-admins
 /common/**/core-backend/                      @iTwin/itwinjs-core-admins
 /common/**/core-common.*                      @iTwin/itwinjs-core-admins @iTwin/itwinjs-core-display
 /common/**/core-common/                       @iTwin/itwinjs-core-admins @iTwin/itwinjs-core-display
@@ -61,25 +72,25 @@ rush.json       @iTwin/itwinjs-core-admins
 /common/**/editor-*/                          @bbastings @kabentley @pmconne
 /common/**/core-extension.*                   @calebmshafer @wgoehrig @aruniverse
 /common/**/core-extension/                    @calebmshafer @wgoehrig @aruniverse
-/common/**/core-frontend.*                    @kabentley @bbastings @iTwin/itwinjs-core-display
+/common/**/core-frontend.*@kabentley @bbastings @iTwin/itwinjs-core-display
 /common/**/core-frontend/                     @kabentley @bbastings @iTwin/itwinjs-core-display
 /common/**/core-i18n.*                        @calebmshafer @wgoehrig
 /common/**/core-i18n/                         @calebmshafer @wgoehrig
-/common/**/core-markup.*                      @kabentley @pmconne @bbastings
+/common/**/core-markup.*@kabentley @pmconne @bbastings
 /common/**/core-markup/                       @kabentley @pmconne @bbastings
 /common/**/core-quantity.*                    @calebmshafer @ColinKerr
 /common/**/core-quantity/                     @calebmshafer @ColinKerr
-/common/**/linear-referencing-backend.*       @ColinKerr @diegoalexdiaz
+/common/**/linear-referencing-backend.*@ColinKerr @diegoalexdiaz
 /common/**/linear-referencing-backend/        @ColinKerr @diegoalexdiaz
 /common/**/linear-referencing-common.*        @ColinKerr @diegoalexdiaz
 /common/**/linear-referencing-common/         @ColinKerr @diegoalexdiaz
-/common/**/core-orbitgt.*                     @iTwin/itwinjs-core-display
+/common/**/core-orbitgt.*@iTwin/itwinjs-core-display
 /common/**/core-orbitgt/                      @iTwin/itwinjs-core-display
 /common/**/perf-tools.*                       @aruniverse @wgoehrig
 /common/**/perf-tools/                        @aruniverse @wgoehrig
-/common/**/physical-material-backend.*        @bbastings @jchick-bentley
+/common/**/physical-material-backend.*@bbastings @jchick-bentley
 /common/**/physical-material-backend/         @bbastings @jchick-bentley
-/common/**/presentation-*.*                   @iTwin/itwinjs-core-presentation
+/common/**/presentation-*.*@iTwin/itwinjs-core-presentation
 /common/**/presentation-*/                    @iTwin/itwinjs-core-presentation
 /common/**/rpcinterface-full-stack-tests/     @aruniverse @paulius-valiunas @wgoehrig
 /common/**/appui-*.*                          @iTwin/itwinjs-core-ui
@@ -111,12 +122,12 @@ rush.json       @iTwin/itwinjs-core-admins
 /core/webgl-compatibility       @iTwin/itwinjs-core-display @Ellord207
 
 /docs   @iTwin/itwinjs-core
-/docs/getting-started @iTwin/itwinjs-core-admins @williamkbentley
 /docs/config          @iTwin/itwinjs-core-admins @williamkbentley
 /docs/presentation    @iTwin/itwinjs-core-presentation
 /docs/bis             @diegoalexdiaz @ColinKerr
 
 # These domains should be split up a bit more
+
 /domains                      @iTwin/itwinjs-core-admins
 /domains/analytical           @ColinKerr @diegoalexdiaz
 /domains/linear-referencing   @ColinKerr @diegoalexdiaz
@@ -163,7 +174,9 @@ rush.json       @iTwin/itwinjs-core-admins
 # These are at the end to override all previous reviews
 
 ## Updates to the package.json should avoid requesting review by everyone
+
 ## If the version updates or
+
 /**/package.json    @iTwin/itwinjs-core
 /**/CHANGELOG.json  @iTwin/itwinjs-core
 /**/CHANGELOG.md    @iTwin/itwinjs-core
