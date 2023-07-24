@@ -1,5 +1,5 @@
 ---
-isOpenByDefault: false
+defaultState: activeOpen
 ---
 
 ## Base Infrastructure Schemas (BIS)
