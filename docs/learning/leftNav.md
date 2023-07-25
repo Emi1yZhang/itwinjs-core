@@ -2,6 +2,9 @@
 matchChildUrls:
   - geometry
   - ui
+  - common
+  - frontend
+  - backend
 ---
 
 ### [The iTwin.js Library](./index.md)
