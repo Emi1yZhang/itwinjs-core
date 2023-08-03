@@ -18,6 +18,7 @@ defaultState: activeOpen
 
   - [Element Fundamentals](./guide/fundamentals/element-fundamentals.md)
   - [Codes](./guide/fundamentals/codes.md)
+  - [FederationGuids](./guide/fundamentals/federationGuids.md)
   - [ElementAspect Fundamentals](./guide/fundamentals/elementaspect-fundamentals.md)
   - [Mixins](./guide/fundamentals/mixins.md)
   - [Model Fundamentals](./guide/fundamentals/model-fundamentals.md)
@@ -80,17 +81,53 @@ defaultState: activeOpen
   - [Class-diagram Conventions](./guide/references/class-diagram-conventions.md)
   - [Instance-diagram Conventions](./guide/references/instance-diagram-conventions.md)
 
-&nbsp;
-
 ### Domain Schemas
 
-- [Overview](./domains/index.md)
-- [Core domains](./domains/core-domains.md)
-- [Common domains](./domains/common-domains.md)
-- [Discipline-Physical domains](./domains/discipline-physical-domains.md)
-- [Discipline-Other domains](./domains/discipline-other-domains.md)
+- #### Core domains
 
-&nbsp;
+  - [Overview](./domains/core-domains.md)
+  - [Analytical](./domains/Analytical.ecschema.md)
+  - [BisCore](./domains/BisCore.ecschema.md)
+  - [- Provenance in BIS](./domains/Provenance-in-BIS.md)
+  - [- Drawings & Sheets](./domains/drawings-sheets.md)
+  - [Functional](./domains/Functional.ecschema.md)
+  - [Generic](./domains/Generic.ecschema.md)
+  - [PhysicalMaterial](./domains/PhysicalMaterial.ecschema.md)
+
+- #### Common domains
+
+  - [Overview](./domains/common-domains.md)
+  - [AECUnits](./domains/AecUnits.ecschema.md)
+  - [ClassificationSystems](./domains/ClassificationSystems.ecschema.md)
+  - [DistributionSystems](./domains/DistributionSystems.ecschema.md)
+  - [DocumentMetadata](./domains/DocumentMetadata.ecschema.md)
+  - [Linear Referencing](./domains/LinearReferencing.ecschema.md)
+  - [Profiles](./domains/Profiles.ecschema.md)
+  - [SpatialComposition](./domains/SpatialComposition.ecschema.md)
+
+- #### Discipline-Physical domains
+
+  - [Overview](./domains/discipline-physical-domains.md)
+  - [Building domains](./domains/discipline-physical-domains/building-domains.md)
+  - [Civil domains](./domains/discipline-physical-domains/civil-domains.md)
+  - [Construction](./domains/Construction.ecschema.md)
+  - [Earthwork](./domains/Earthwork.ecschema.md)
+  - [Structural domains](./domains/discipline-physical-domains/structural-domains.md)
+  - [Terrain](./domains/Terrain.ecschema.md)
+
+- #### Discipline-Other domains
+
+  - [Overview](./domains/discipline-other-domains.md)
+  - [Structural domains](./domains/discipline-other-domains/structural-domains.md)
+
+- #### Standard schemas
+
+  - [Overview](./domains/standard-schemas.md)
+  - [BisCustomAttributes](./domains/BisCustomAttributes.ecschema.md)
+  - [CoreCustomAttributes](./domains/CoreCustomAttributes.ecschema.md)
+  - [ECDbMap](./domains/ECDbMap.ecschema.md)
+  - [Formats](./domains/Formats.ecschema.md)
+  - [Units](./domains/Units.ecschema.md)
 
 ### Engineering Content (EC)
 
