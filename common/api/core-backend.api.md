@@ -1682,18 +1682,16 @@ export interface ECEnumValue {
     value: number | string;
 }
 
-// @internal (undocumented)
+// @beta
 export class ECSchemaXmlContext {
     constructor();
-    // (undocumented)
     addSchemaPath(searchPath: string): void;
-    // (undocumented)
+    // @internal (undocumented)
     get nativeContext(): IModelJsNative.ECSchemaXmlContext;
-    // (undocumented)
     readSchemaFromXmlFile(filePath: string): any;
-    // (undocumented)
+    // @internal
     setFirstSchemaLocater(locater: IModelJsNative.ECSchemaXmlContext.SchemaLocaterCallback): void;
-    // (undocumented)
+    // @internal
     setSchemaLocater(locater: IModelJsNative.ECSchemaXmlContext.SchemaLocaterCallback): void;
 }
 
@@ -1936,7 +1934,6 @@ export { Element_2 as Element }
 
 // @public
 export class ElementAspect extends Entity {
-    // @internal
     constructor(props: ElementAspectProps, iModel: IModelDb);
     // @internal (undocumented)
     static get className(): string;
@@ -2361,7 +2358,6 @@ export class ExternalSource extends InformationReferenceElement {
 
 // @public
 export class ExternalSourceAspect extends ElementMultiAspect {
-    // @internal
     constructor(props: ExternalSourceAspectProps, iModel: IModelDb);
     checksum?: string;
     // @internal (undocumented)
@@ -2898,7 +2894,7 @@ export abstract class IModelDb extends IModel {
     cancelSnap(sessionId: string): void;
     // @beta (undocumented)
     readonly channels: ChannelControl;
-    // @beta
+    // @internal
     get classMetaDataRegistry(): MetaDataRegistry;
     clearCaches(): void;
     // @internal (undocumented)
@@ -3976,7 +3972,7 @@ export interface LockStatusShared {
     state: LockState.Shared;
 }
 
-// @beta
+// @internal
 export class MetaDataRegistry {
     add(classFullName: string, metaData: EntityMetaData): void;
     find(classFullName: string): EntityMetaData | undefined;
