@@ -1,8 +1,8 @@
 # Getting started with iTwin.js
 
-iTwin.js has a comprehensive set of APIs that can be used anywhere an [iModel](./imodels.md) may be relevant. It's a big library: where you start will depend on what you'd like to build. If you're looking to extend an iTwin viewer user interface, perhaps adding a new tool or widget, [check out the frontend guide](./frontend/index). For higher level React components, you may want to [take a look at AppUI](./ui/appui/index.md).
+iTwin.js has a comprehensive set of APIs that can be used anywhere an [iModel](./imodels.md) may be relevant. It's a big library: where you start will depend on what you'd like to build. If you're looking to extend an iTwin viewer's user interface -- perhaps adding a new tool or widget -- [check out the frontend guide](./frontend/index). For higher level React components, you may want to [take a look at AppUI](./ui/appui/index.md).
 
-What if you want to create a service and are interested in managing iModels, working with its elements, exposing, or otherwise working with the data inside a model? You'll want to [head over to our backend documentation](./backend/index). While we're on the subject of querying data, we have a great [tutorial to get you up to speed on ECSQL](./ECSQLTutorial/index.md).
+If you're working on a service and want to query an iModel's data you'll want to [head over to our backend documentation](./backend/index). While we're on the subject of querying data, we have a great [tutorial to get you up to speed on ECSQL](./ECSQLTutorial/index.md).
 
 There's much, much more, so explore the sections to the left and the [helpful articles at the bottom of this page](#helpful-articles).
 

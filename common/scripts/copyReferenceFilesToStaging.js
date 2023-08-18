@@ -10,13 +10,13 @@
 4. Provides the ability to modify the default path (itwinjs-core/staging-docs) through CLI arguments
 Usage: node copyReferenceFilesToStaging.js staging-docs-directory.
 */
+const fs = require("fs/promises");
 const path = require("path");
 const process = require("process");
 const childProcess = require("child_process");
 const options = {
   encoding: "utf8",
 };
-const fs = require("fs/promises");
 
 async function copyFilesToStaging() {
   let basePath = childProcess.execSync(
@@ -51,11 +51,6 @@ async function copyFilesToStaging() {
   console.log("Copying finished successfully");
 }
 
-copyFilesToStaging()
-  .then(() => {
-    console.log("Copy finished successfully");
-  })
-  .catch((err) => {
-    console.log("Error while copying reference files to staging");
-    console.error(err);
-  });
+copyFilesToStaging().then(() => {
+  console.log("Copy finished successfully");
+});
