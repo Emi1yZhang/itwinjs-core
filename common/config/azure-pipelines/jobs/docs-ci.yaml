@@ -1,10 +1,10 @@
 # iTwin.js Docs CI Build
 
 parameters:
-  name: forcePublish
-  displayName: Publish?
-  type: boolean
-  default: false
+  - name: forcePublish
+    displayName: Publish?
+    type: boolean
+    default: false
 
 trigger:
   branches:
