@@ -48,6 +48,7 @@ export const UNIT_EXTRA_DATA = [
   { name: "Units.SQ_FT", altDisplayLabels: ["sf"] },
   { name: "Units.SQ_US_SURVEY_FT", altDisplayLabels: ["sussf"] },
   { name: "Units.SQ_M", altDisplayLabels: ["sm"] },
+  { name: "Units.SQ_KM", altDisplayLabels: ["skm"] },
   // conversion => specified unit to base unit m³
   { name: "Units.CUB_FT", altDisplayLabels: ["cf"] },
   { name: "Units.CUB_US_SURVEY_FT", altDisplayLabels: ["cf"] },
